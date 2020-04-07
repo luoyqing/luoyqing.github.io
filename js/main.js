@@ -2,6 +2,7 @@ $(function () {
   const isSnackbar = GLOBAL_CONFIG.Snackbar !== undefined
   const $pageHead = $('#page-header')
   const $rightside = $('#rightside')
+  const $rightside2 = $('#player')
   const $body = $('body')
 
   /**
@@ -431,12 +432,14 @@ $(function () {
       $pageHead.addClass('fixed')
       if ($rightside.css('opacity') === '0') {
         $rightside.css({ opacity: '1', transform: 'translateX(-38px)' })
+        $rightside2.css({ opacity: '1' })
       }
     } else {
       if (currentTop === 0) {
         $pageHead.removeClass('fixed').removeClass('visible')
       }
       $rightside.css({ opacity: '', transform: '' })
+      $rightside2.css({ opacity: '' })
     }
   })
 

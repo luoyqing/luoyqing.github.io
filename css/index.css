@@ -3649,6 +3649,19 @@ figure.gallery-group .gallery-group-name:after {
     width: 100% !important;
   }
 }
+#player {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+}
 #article-container h1,
 #article-container h2,
 #article-container h3,
@@ -4239,7 +4252,7 @@ img {
 #rightside {
   position: fixed;
   right: -38px;
-  bottom: 40px;
+  bottom: 150px;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -4250,11 +4263,11 @@ img {
   transition: all 0.5s;
 }
 #rightside #rightside-config-hide {
-  -webkit-transform: translate(35px, 0);
-  -moz-transform: translate(35px, 0);
-  -o-transform: translate(35px, 0);
-  -ms-transform: translate(35px, 0);
-  transform: translate(35px, 0);
+  -webkit-transform: translate(30px, 0);
+  -moz-transform: translate(30px, 0);
+  -o-transform: translate(30px, 0);
+  -ms-transform: translate(30px, 0);
+  transform: translate(30px, 0);
 }
 #rightside .rightside-in {
   -webkit-transform: translate(0, 0) !important;
