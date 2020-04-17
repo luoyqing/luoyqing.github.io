@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>传智杯题解（四） | Wellcome to Mr.Luo BLOG</title><meta name="description" content="传智杯题解（四）"><meta name="keywords" content="贪心"><meta name="author" content="The 罗"><meta name="copyright" content="The 罗"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="传智杯题解（四）"><meta name="twitter:description" content="传智杯题解（四）"><meta name="twitter:image" content="https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/yj.jpg"><meta property="og:type" content="article"><meta property="og:title" content="传智杯题解（四）"><meta property="og:url" content="http://www.luoyqing.github.io/2020/04/17/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89/"><meta property="og:site_name" content="Wellcome to Mr.Luo BLOG"><meta property="og:description" content="传智杯题解（四）"><meta property="og:image" content="https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/yj.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css" ><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://www.luoyqing.github.io/2020/04/17/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89/"><link rel="prev" title="过河卒" href="http://www.luoyqing.github.io/2020/04/17/%E8%BF%87%E6%B2%B3%E5%8D%92/"><link rel="next" title="传智杯题解（三）" href="http://www.luoyqing.github.io/2020/04/15/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E4%B8%89%EF%BC%89/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"RNG NB","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: true,
+  isPhotoFigcaption: true
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 成长史</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目要点："><span class="toc-number">1.</span> <span class="toc-text">题目要点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-number">2.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入格式"><span class="toc-number">3.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">4.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入输出样例"><span class="toc-number">5.</span> <span class="toc-text">输入输出样例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明-提示"><span class="toc-number">6.</span> <span class="toc-text">说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解："><span class="toc-number">7.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码如下："><span class="toc-number">8.</span> <span class="toc-text">代码如下：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">9.</span> <span class="toc-text">总结：</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/yj.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Wellcome to Mr.Luo BLOG</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 成长史</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">传智杯题解（四）</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-04-17 17:55:12"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-17</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-04-17 18:41:38"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-04-17</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E4%BC%A0%E6%99%BA%E6%9D%AF/">传智杯</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon far fa-comments" aria-hidden="true"></i><span>评论数:</span><a href="/2020/04/17/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/04/17/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="题目要点："><a href="#题目要点：" class="headerlink" title="题目要点："></a>题目要点：</h2><p>这题主要考察贪心，进制转换提了一下。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>k 老师在研究一段病毒程序的代码。这段代码是由一段长度不超过 10^6 的十六进制字符（也就是 <code>0</code> 到 <code>9</code> 和 <code>A</code> 到 <code>F</code>）组成的信息。现在 k 老师要将其转换为二进制的 0/1 串（这个时候需要确保最高位是 1）。然后对这个 0/1 串进行“翻转”操作。</p>
+<p>对于每次“翻转”操作，k 老师可以选择这个 0/1 串中的其中一位，将这一位和这一位相邻的两位，一共三位，分别进行“翻转”（也就是 0 变 1，1 变 0）。如果指定的这一位是序列的开头或者结尾，那么翻转这一位和存在的相邻位即可。</p>
+<p>k 老师想知道，如何用最少的“翻转”步骤，将这个 0/1 串变为全 0 的串。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>一个十六进制的字符串，由 <code>0</code> 到 <code>9</code> 和 <code>A</code> 到 <code>F</code> 构成。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>最少能将其变为全 0 串需要的“翻转”步骤次数。如果无论如何都不能将其变为全 0 串，则输出 <code>No</code>。</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p><strong>输入 #1</strong>复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #1</strong>复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p><strong>输入 #2</strong>复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FF</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #2</strong>复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p><strong>输入 #3</strong>复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #3</strong>复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明/提示"></a>说明/提示</h2><p>样例解释：</p>
+<p>十六进制的 15 对应二进制的 10101，翻转第 1/3/5 位，就可以全部变为 0。</p>
+<p>十六进制的 FF 对应二进制的 11111111，翻转第 2/5/8 位，就可以全部变为 0。</p>
+<p>十六进制的 10 对应二进制的 10000，无法全变为 0。</p>
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><p>先把输入的16进制数转为二进制，去掉前导零。再去判断翻转次数。</p>
+<p>这题关键要注意翻转的方法，有两种情况：</p>
+<p>把转换后的的数据复制到另一个数组方便判断两种方法。</p>
+<p>1种：翻转第一个1本身和后面两个数（就是翻转中间那个）。之后再出现1同上，直到倒数第三个数为止。最后如果最后两个数相同且为1，次数加一。若不同为no。</p>
+<p>2种：翻转第一个1和他后面的数（翻转第一个数）之后和1种方法一样。</p>
+<p>最后判断两个方法是否都是no若是输出no,不是输出小的那个次数。</p>
+<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="keyword">bool</span> maxk[<span class="number">4000005</span>],max1[<span class="number">4000005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> p=<span class="number">0</span>,q=<span class="number">0</span>,x,ans=<span class="number">0</span>,ans1=<span class="number">0</span>;]()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> i;</span><br><span class="line">	<span class="keyword">for</span>( i=<span class="number">0</span>;i&lt;s.length();i++) <span class="comment">//进制转换 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]&gt;=<span class="number">65</span>)</span><br><span class="line">		s[i]=s[i]<span class="number">-55</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		s[i]=s[i]<span class="number">-48</span>;</span><br><span class="line">		maxk[p++]=max1[q++]=(s[i]&amp;<span class="number">8</span>);   <span class="comment">//p为数组长度 </span></span><br><span class="line">		maxk[p++]=max1[q++]=(s[i]&amp;<span class="number">4</span>);</span><br><span class="line">		maxk[p++]=max1[q++]=(s[i]&amp;<span class="number">2</span>);</span><br><span class="line">		maxk[p++]=max1[q++]=s[i]&amp;<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(!maxk[i]&amp;&amp;i&lt;p)     <span class="comment">//去掉前导零，注意全零的情况 </span></span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	x=i;</span><br><span class="line">	<span class="keyword">for</span>(;i&lt;p<span class="number">-2</span>;i++)       <span class="comment">// 第一种方法 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(maxk[i]==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">		maxk[i]=maxk[i]^<span class="number">1</span>;</span><br><span class="line">		maxk[i+<span class="number">1</span>]=maxk[i+<span class="number">1</span>]^<span class="number">1</span>;</span><br><span class="line">		maxk[i+<span class="number">2</span>]=maxk[i+<span class="number">2</span>]^<span class="number">1</span>;</span><br><span class="line">		ans++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(maxk[p<span class="number">-1</span>]!=maxk[p<span class="number">-2</span>])ans=<span class="number">-1</span>;  <span class="comment">//判断是否可行 </span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(maxk[p<span class="number">-2</span>]==<span class="number">1</span>)</span><br><span class="line">	ans++;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(max1[x]!=<span class="number">1</span>&amp;&amp;ans==<span class="number">0</span>)   <span class="comment">//若为全零输出零 </span></span><br><span class="line">   &#123;</span><br><span class="line">   	<span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">   	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">	max1[x]=max1[x]^<span class="number">1</span>;      <span class="comment">//第二种方法 </span></span><br><span class="line">	max1[x+<span class="number">1</span>]=max1[x+<span class="number">1</span>]^<span class="number">1</span>;</span><br><span class="line">	ans1++;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​	</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=x+<span class="number">1</span>;i&lt;q<span class="number">-2</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(max1[i]==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			max1[i]=max1[i]^<span class="number">1</span>;</span><br><span class="line">		   max1[i+<span class="number">1</span>]=max1[i+<span class="number">1</span>]^<span class="number">1</span>;</span><br><span class="line">		   max1[i+<span class="number">2</span>]=max1[i+<span class="number">2</span>]^<span class="number">1</span>;</span><br><span class="line">		   ans1++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(max1[q<span class="number">-1</span>]!=max1[q<span class="number">-2</span>])  <span class="comment">//是否可行 </span></span><br><span class="line">	ans1=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(max1[q<span class="number">-2</span>]==<span class="number">1</span>)</span><br><span class="line">	ans1++;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(ans1==<span class="number">-1</span>&amp;&amp;ans==<span class="number">-1</span>)    <span class="comment">//输出 注意考虑所有情况 </span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"No"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(ans1==<span class="number">-1</span>)</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(ans==<span class="number">-1</span>)</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans1&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">min</span>(ans,ans1)&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>这题难度是有的。我也是参考别的大佬写的代码，再用自己的方式表达出来而已。最主要的还是掌握方法看懂例子。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">The 罗</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.luoyqing.github.io/2020/04/17/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89/">http://www.luoyqing.github.io/2020/04/17/传智杯题解（四）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.luoyqing.github.io" target="_blank">Wellcome to Mr.Luo BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a></div><div class="post_share"><div class="social-share" data-image="https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/%E9%9B%AA%E6%99%AF.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wx.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/zfb.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/17/%E8%BF%87%E6%B2%B3%E5%8D%92/"><img class="prev_cover lazyload" data-src="https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/%E9%9B%AA%E6%99%AF.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">过河卒</div></div></a></div><div class="next-post pull_right"><a href="/2020/04/15/%E4%BC%A0%E6%99%BA%E6%9D%AF%E9%A2%98%E8%A7%A3%EF%BC%88%E4%B8%89%EF%BC%89/"><img class="next_cover lazyload" data-src="https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/dongjpg.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">传智杯题解（三）</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: '1XccU7QqFlwS3rb2TXJQorYO-gzGzoHsz',
+  appKey: 'YyM9H3fOekSx9RpN3yqwUsBP',
+  placeholder: '有屁快放！',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(https://imgwdnm.oss-cn-hangzhou.aliyuncs.com/yj.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By The 罗</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div><div class="footer_custom_text">恭喜你翻到底了</div><div class="icp"><a href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>苏ICP备20018695号</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><i class="darkmode far fa-moon" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><section id="player"><!--if(is_music()) --><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=4955853153&auto=1&height=90"></iframe></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js" ></script><script src="/js/utils.js" ></script><script src="/js/main.js" ></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script></body></html>
